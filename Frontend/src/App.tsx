@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@/components/theme-provider';
 import LandingPage from '@/pages/LandingPage';
+import StudentRegistration from '@/pages/StudentRegistration';
 import StudentDashboard from '@/pages/dashboards/StudentDashboard';
 import FacultyDashboard from '@/pages/dashboards/FacultyDashboard';
 import HODDashboard from '@/pages/dashboards/HODDashboard';
@@ -27,6 +28,7 @@ function App() {
               path="/"
               element={<LandingPage onRoleSelect={handleRoleSelect} />}
             />
+            <Route path="/register" element={<StudentRegistration />} />
             <Route path="/student" element={<StudentDashboard />} />
             <Route path="/faculty" element={<FacultyDashboard />} />
             <Route path="/hod" element={<HODDashboard />} />

@@ -582,3 +582,285 @@ export const getAcademicPerformance = () => {
     passRate: (mockExamResults.filter(result => result.grade !== 'F').length / totalResults) * 100
   };
 };
+
+// Student Registration Interface (already defined in types/index.ts, import from there)
+import type { StudentRegistration } from '@/types/index';
+
+// Mock Student Registrations
+export const mockRegistrations: StudentRegistration[] = [
+  {
+    id: 'REG001',
+    status: 'pending',
+    submittedDate: '2025-10-25',
+    personalInfo: {
+      fullName: 'Rahul Kumar',
+      gender: 'Male',
+      dateOfBirth: '2006-05-15',
+      bloodGroup: 'O+',
+      category: 'General',
+      religion: 'Hindu',
+      nationality: 'Indian',
+      aadhaarNumber: '123456789012',
+      email: 'rahul.kumar@email.com',
+      mobile: '9876543210',
+      alternateMobile: '9876543211'
+    },
+    familyDetails: {
+      fatherName: 'Suresh Kumar',
+      fatherOccupation: 'Business',
+      fatherMobile: '9876543212',
+      motherName: 'Sunita Kumar',
+      motherOccupation: 'Homemaker',
+      annualIncome: '500000'
+    },
+    addressDetails: {
+      permanentAddress: '123 Main Street, Delhi',
+      currentAddress: '123 Main Street, Delhi',
+      state: 'Delhi',
+      district: 'Central Delhi',
+      pinCode: '110001'
+    },
+    academicDetails: {
+      tenth: {
+        schoolName: 'Delhi Public School',
+        boardName: 'CBSE',
+        passingYear: '2021',
+        rollNumber: '12345',
+        percentage: '92.5'
+      },
+      twelfth: {
+        schoolName: 'Delhi Public School',
+        boardName: 'CBSE',
+        passingYear: '2023',
+        rollNumber: '23456',
+        percentage: '88.5'
+      },
+      entranceExam: {
+        examName: 'JEE Main',
+        rollNumber: 'JEE123456',
+        rank: '5234',
+        score: '245'
+      }
+    },
+    courseDetails: {
+      courseName: 'B.Tech',
+      branch: 'Computer Science',
+      admissionCategory: 'Merit',
+      academicYear: '2025-2029',
+      admissionDate: '2025-10-25'
+    },
+    documents: {},
+    hostelTransport: {
+      requireHostel: true,
+      requireTransport: false,
+      localGuardianName: 'Ram Kumar',
+      localGuardianAddress: '456 College Road, Delhi',
+      medicalCondition: 'None'
+    },
+    feePayment: {
+      feeType: 'Admission Fee',
+      transactionId: 'TXN123456',
+      paymentMode: 'Online',
+      paymentDate: '2025-10-24'
+    }
+  },
+  {
+    id: 'REG002',
+    status: 'pending',
+    submittedDate: '2025-10-26',
+    personalInfo: {
+      fullName: 'Priya Sharma',
+      gender: 'Female',
+      dateOfBirth: '2006-08-20',
+      bloodGroup: 'A+',
+      category: 'OBC',
+      religion: 'Hindu',
+      nationality: 'Indian',
+      aadhaarNumber: '987654321098',
+      email: 'priya.sharma@email.com',
+      mobile: '9876543213',
+      alternateMobile: '9876543214'
+    },
+    familyDetails: {
+      fatherName: 'Vijay Sharma',
+      fatherOccupation: 'Government Employee',
+      fatherMobile: '9876543215',
+      motherName: 'Meena Sharma',
+      motherOccupation: 'Teacher',
+      annualIncome: '800000'
+    },
+    addressDetails: {
+      permanentAddress: '789 Park Avenue, Mumbai',
+      currentAddress: '789 Park Avenue, Mumbai',
+      state: 'Maharashtra',
+      district: 'Mumbai',
+      pinCode: '400001'
+    },
+    academicDetails: {
+      tenth: {
+        schoolName: 'Mumbai High School',
+        boardName: 'State Board',
+        passingYear: '2021',
+        rollNumber: '54321',
+        percentage: '90.0'
+      },
+      twelfth: {
+        schoolName: 'Mumbai High School',
+        boardName: 'State Board',
+        passingYear: '2023',
+        rollNumber: '65432',
+        percentage: '85.5'
+      },
+      entranceExam: {
+        examName: 'CUET',
+        rollNumber: 'CUET654321',
+        score: '520'
+      }
+    },
+    courseDetails: {
+      courseName: 'BCA',
+      branch: 'Computer Applications',
+      admissionCategory: 'Reserved',
+      academicYear: '2025-2028',
+      admissionDate: '2025-10-26'
+    },
+    documents: {},
+    hostelTransport: {
+      requireHostel: false,
+      requireTransport: true
+    }
+  },
+  {
+    id: 'REG003',
+    status: 'approved',
+    submittedDate: '2025-10-20',
+    approvedDate: '2025-10-23',
+    rollNumber: 'CS2025001',
+    personalInfo: {
+      fullName: 'Amit Patel',
+      gender: 'Male',
+      dateOfBirth: '2006-03-10',
+      bloodGroup: 'B+',
+      category: 'General',
+      nationality: 'Indian',
+      aadhaarNumber: '456789012345',
+      email: 'amit.patel@email.com',
+      mobile: '9876543216'
+    },
+    familyDetails: {
+      fatherName: 'Kiran Patel',
+      fatherOccupation: 'Farmer',
+      fatherMobile: '9876543217',
+      motherName: 'Lalita Patel',
+      annualIncome: '300000'
+    },
+    addressDetails: {
+      permanentAddress: '321 Village Road, Gujarat',
+      currentAddress: '321 Village Road, Gujarat',
+      state: 'Gujarat',
+      district: 'Ahmedabad',
+      pinCode: '380001'
+    },
+    academicDetails: {
+      tenth: {
+        schoolName: 'Gujarat Secondary School',
+        boardName: 'State Board',
+        passingYear: '2021',
+        rollNumber: '11111',
+        percentage: '95.0'
+      },
+      twelfth: {
+        schoolName: 'Gujarat Higher Secondary',
+        boardName: 'State Board',
+        passingYear: '2023',
+        rollNumber: '22222',
+        percentage: '91.0'
+      }
+    },
+    courseDetails: {
+      courseName: 'B.Tech',
+      branch: 'Computer Science',
+      admissionCategory: 'Merit',
+      academicYear: '2025-2029',
+      admissionDate: '2025-10-20'
+    },
+    documents: {},
+    hostelTransport: {
+      requireHostel: true,
+      requireTransport: false
+    }
+  },
+  {
+    id: 'REG004',
+    status: 'rejected',
+    submittedDate: '2025-10-22',
+    approvedDate: '2025-10-24',
+    personalInfo: {
+      fullName: 'Sneha Reddy',
+      gender: 'Female',
+      dateOfBirth: '2007-12-05',
+      category: 'SC',
+      nationality: 'Indian',
+      aadhaarNumber: '789012345678',
+      email: 'sneha.reddy@email.com',
+      mobile: '9876543218'
+    },
+    familyDetails: {
+      fatherName: 'Krishna Reddy',
+      fatherOccupation: 'Driver',
+      fatherMobile: '9876543219',
+      motherName: 'Lakshmi Reddy',
+      annualIncome: '250000'
+    },
+    addressDetails: {
+      permanentAddress: '567 Temple Street, Hyderabad',
+      currentAddress: '567 Temple Street, Hyderabad',
+      state: 'Telangana',
+      district: 'Hyderabad',
+      pinCode: '500001'
+    },
+    academicDetails: {
+      tenth: {
+        schoolName: 'Hyderabad Public School',
+        boardName: 'CBSE',
+        passingYear: '2022',
+        rollNumber: '33333',
+        percentage: '75.0'
+      },
+      twelfth: {
+        schoolName: 'Hyderabad Public School',
+        boardName: 'CBSE',
+        passingYear: '2024',
+        rollNumber: '44444',
+        percentage: '70.0'
+      }
+    },
+    courseDetails: {
+      courseName: 'B.Sc',
+      branch: 'Physics',
+      admissionCategory: 'Reserved',
+      academicYear: '2025-2028',
+      admissionDate: '2025-10-22'
+    },
+    documents: {},
+    hostelTransport: {
+      requireHostel: false,
+      requireTransport: false
+    }
+  }
+];
+
+// Get pending registrations
+export const getPendingRegistrations = () => {
+  return mockRegistrations.filter(reg => reg.status === 'pending');
+};
+
+// Get all registrations
+export const getAllRegistrations = () => {
+  return mockRegistrations;
+};
+
+// Get registration by ID
+export const getRegistrationById = (id: string) => {
+  return mockRegistrations.find(reg => reg.id === id);
+};

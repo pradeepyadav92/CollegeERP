@@ -12,7 +12,8 @@ import {
   FileText,
   Shield,
   Moon,
-  Sun
+  Sun,
+  UserPlus
 } from 'lucide-react';
 import type { UserRole } from '@/types/index';
 import { useTheme } from '@/components/theme-provider';
@@ -138,6 +139,13 @@ const LandingPage: React.FC<{ onRoleSelect: (role: UserRole) => void }> = ({ onR
               Enterprise Resource Planning
             </Badge>
             <Button
+              onClick={() => navigate('/register')}
+              className="bg-green-600 hover:bg-green-700 text-white"
+            >
+              <UserPlus className="h-4 w-4 mr-2" />
+              New Student
+            </Button>
+            <Button
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -155,6 +163,26 @@ const LandingPage: React.FC<{ onRoleSelect: (role: UserRole) => void }> = ({ onR
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-12">
+        {/* Registration CTA */}
+        <div className="mb-12 bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl p-8 text-white shadow-xl">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-4">
+              New Student? Register Now!
+            </h2>
+            <p className="text-lg mb-6 text-green-50">
+              Start your journey with us. Complete the online registration form and get your unique student roll number after approval.
+            </p>
+            <Button
+              onClick={() => navigate('/register')}
+              size="lg"
+              className="bg-white text-green-600 hover:bg-gray-100 font-semibold"
+            >
+              <UserPlus className="h-5 w-5 mr-2" />
+              Register as New Student
+            </Button>
+          </div>
+        </div>
+
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
             Choose Your Dashboard
